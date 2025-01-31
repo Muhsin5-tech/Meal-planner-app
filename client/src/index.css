@@ -1,7 +1,587 @@
+/* General styles */
 :root {
-  --bg: #282c34;
-  --header: #fff;
-  --link: #61dafb;
-  --text: hsla(0, 0%, 100%, 0.88);
+  --primary-color: #27ae60;
+  --danger-color: #e74c3c;
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --secondary-text-color: #7f8c8d;
+  --border-color: #ddd;
+  --button-hover-color: #229954;
+  --hover-shadow: rgba(0, 0, 0, 0.15);
+  --card-bg-color: #ffffff;
+  --font-family: 'Arial', sans-serif;
+  --font-heading: 'Roboto', sans-serif;
 }
 
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+/* MealList container */
+.meal-list-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.meal-list-container:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.meal-list-container h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Meal cards grid */
+.meal-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Individual meal card */
+.meal-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 4px 8px var(--hover-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meal-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px var(--hover-shadow);
+}
+
+.meal-card h3 {
+  font-size: 1.6rem;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+.meal-card p {
+  font-size: 1.1rem;
+  color: var(--secondary-text-color);
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.meal-card .ingredients {
+  font-style: italic;
+  color: var(--secondary-text-color);
+}
+
+.meal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-top: 15px;
+  max-height: 200px;
+}
+
+/* Meal buttons in cards */
+.meal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.meal-buttons button {
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.meal-buttons button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button.delete {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+button.delete:hover {
+  background-color: #c0392b;
+}
+
+button.edit {
+  background-color: #3498db;
+  color: white;
+}
+
+button.edit:hover {
+  background-color: #2980b9;
+}
+
+/* MealForm styles */
+.meal-form {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.meal-form:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.meal-form h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.meal-form label {
+  display: block;
+  font-size: 1.1rem;
+  color: #34495e;
+  margin: 10px 0 5px;
+}
+
+.meal-form input,
+.meal-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.meal-form input:focus,
+.meal-form textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.meal-form button {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  font-size: 1.1rem;
+  color: #ffffff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.meal-form button:hover {
+  background-color: var(--button-hover-color);
+  transform: scale(1.05);
+}
+
+/* MealEditForm styles */
+.meal-edit-form {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.meal-edit-form h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.meal-edit-form label {
+  display: block;
+  font-size: 1.1rem;
+  color: #34495e;
+  margin: 10px 0 5px;
+}
+
+.meal-edit-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.meal-edit-form button {
+  font-size: 1rem;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.meal-edit-form button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.meal-edit-form button[type="submit"]:hover {
+  background-color: var(--button-hover-color);
+  transform: scale(1.05);
+}
+
+.meal-edit-form button[type="button"] {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.meal-edit-form button[type="button"]:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.cancel-button {
+  margin-left: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .meal-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+
+  .meal-form {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .meal-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .meal-form {
+    max-width: 100%;
+  }
+}
+
+
+/* nav bar */
+.navbar {
+  background-color: #34495e;
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-link:hover {
+  background-color: #27ae60;
+  transform: scale(1.05);
+}
+
+.navbar-link:active {
+  background-color: #2ecc71;
+}
+
+.navbar-link:focus {
+  outline: 2px solid #27ae60;
+}
+/* home */
+.home-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 40px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-buttons .button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #3498db;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-buttons .button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.nav-buttons .button:active {
+  background-color: #1f6f8b;
+}
+
+.nav-buttons .button:focus {
+  outline: 2px solid #3498db;
+}
+
+/* day plans*/
+/* Day Plan container for improved visuals */
+.dayplan-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.dayplan-container:hover {
+  transform: scale(1.02);
+}
+
+.dayplan-container h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.dayplan-container h3 {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Day Plan Cards */
+.dayplan-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  transition: all 0.2s ease;
+}
+
+.dayplan-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dayplan-card h3 {
+  color: #16a085;
+  font-size: 1.5rem;
+}
+
+.dayplan-card p {
+  color: #95a5a6;
+  font-size: 1.1rem;
+}
+
+.dayplan-card ul {
+  list-style: none;
+  margin-left: 20px;
+}
+
+.dayplan-card ul li {
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.dayplan-card .meal-list {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.dayplan-card .meal-list ul {
+  padding-left: 10px;
+}
+
+.dayplan-card .meal-list ul li {
+  color: #2ecc71;
+  font-size: 1.2rem;
+}
+
+.no-meals-message {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Styling for DayPlanList component */
+h2 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* Edit Day Plan Form with better spacing */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px auto;
+  width: 60%;
+}
+
+form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border 0.3s ease;
+}
+
+form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+form input:focus {
+  border-color: #2ecc71;
+  outline: none;
+}
+
+button {
+  padding: 12px 18px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+
+/* Form success/error messages */
+form p {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.success-message {
+  color: #2ecc71;
+}
+
+.error-message {
+  color: #e74c3c;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  .dayplan-container {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .dayplan-container h1 {
+    font-size: 2rem;
+  }
+
+  .dayplan-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dayplan-card .meal-list {
+    margin-top: 10px;
+  }
+
+  .meal-list ul li {
+    font-size: 1rem;
+  }
+
+  form {
+    width: 90%;
+  }
+
+  button {
+    padding: 10px;
+  }
+}
