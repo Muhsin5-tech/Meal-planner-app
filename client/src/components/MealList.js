@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MealEditForm from './MealEditForm';
 import MealForm from './MealForm';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const MealList = () => {
   const [meals, setMeals] = useState([]);
   const [editingMeal, setEditingMeal] = useState(null);
@@ -11,7 +13,7 @@ const MealList = () => {
   }, []);
 
   const fetchMeals = () => {
-    fetch('https://meal-planner-app-backend.onrender.com/meals')
+    fetch(`${API_URL}/meals`)
       .then((response) => response.json())
       .then((data) => setMeals(data))
       .catch((error) => console.error('Error fetching meals:', error));
@@ -22,7 +24,7 @@ const MealList = () => {
   };
 
   const handleDelete = (mealId) => {
-    fetch(`https://meal-planner-app-backend.onrender.com/meals/${mealId}`, {
+    fetch(`${API_URL}/meals/${mealId}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -37,7 +39,7 @@ const MealList = () => {
   };
 
   const handleUpdate = (updatedMeal) => {
-    fetch(`https://meal-planner-app-backend.onrender.com/meals/${updatedMeal.id}`, {
+    fetch(`${API_URL}/meals/${updatedMeal.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
