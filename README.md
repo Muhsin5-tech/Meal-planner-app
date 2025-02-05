@@ -79,3 +79,8 @@ React for the frontend framework.
 SQLAlchemy for the ORM.
 Flask-Migrate for database migrations.
 # Live link
+backend-deployment link <https://meal-planner-app-backend.onrender.com/>
+
+backend github repo <https://github.com/Muhsin5-tech/Meal-planner-app-backend>
+
+frontend-deployment link <https://meal-planner-app-1os3.onrender.com/>
