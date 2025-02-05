@@ -9,7 +9,7 @@ const EditDayPlan = () => {
   const [userId, setUserId] = useState('');
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000/dayplans/${dayPlanId}`)
+    fetch(`https://meal-planner-app-backend.onrender.com/dayplans/${dayPlanId}`)
       .then((response) => response.json())
       .then((data) => {
         setDayPlan(data);
@@ -27,7 +27,7 @@ const EditDayPlan = () => {
       user_id: userId,
     };
 
-    fetch(`http://127.0.0.1:5000/dayplans/${dayPlanId}`, {
+    fetch(`https://meal-planner-app-backend.onrender.com/dayplans/${dayPlanId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

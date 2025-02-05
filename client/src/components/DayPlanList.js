@@ -6,7 +6,7 @@ const DayPlanList = () => {
   useEffect(() => {
     const fetchDayPlans = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/dayplans');
+        const response = await fetch('https://meal-planner-app-backend.onrender.com/dayplans');
         const data = await response.json();
         setDayPlans(data);
       } catch (error) {

@@ -10,7 +10,6 @@ The application is built using React for the frontend, Flask for the backend, an
     - API Endpoints
     - Database Models
     - Features
-    - Troubleshooting
     - Contributing
     - License
 

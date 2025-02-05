@@ -13,7 +13,7 @@ const DayPlanForm = () => {
       user_id: userId,
     };
 
-    fetch('http://127.0.0.1:5000/dayplans', {
+    fetch('https://meal-planner-app-backend.onrender.com/dayplans', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

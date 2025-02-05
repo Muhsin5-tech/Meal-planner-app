@@ -29,7 +29,7 @@ const MealForm = ({ onAddMeal, mealToEdit, onEditMeal }) => {
 
     if (mealToEdit) {
       // Edit meal
-      fetch(`http://127.0.0.1:5000/meals/${mealToEdit.id}`, {
+      fetch(`https://meal-planner-app-backend.onrender.com/meals/${mealToEdit.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMeal),
@@ -46,7 +46,7 @@ const MealForm = ({ onAddMeal, mealToEdit, onEditMeal }) => {
         .catch((error) => console.error('Error updating meal:', error));
     } else {
       // Add new meal
-      fetch('http://127.0.0.1:5000/meals', {
+      fetch('https://meal-planner-app-backend.onrender.com/meals', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMeal),

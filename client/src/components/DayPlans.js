@@ -6,7 +6,7 @@ const DayPlans = () => {
   const [dayPlan, setDayPlan] = useState(null);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000/dayplans/${dayPlanId}`)
+    fetch(`https://meal-planner-app-backend.onrender.com/dayplans/${dayPlanId}`)
       .then((response) => response.json())
       .then((data) => setDayPlan(data))
       .catch((error) => console.error('Error fetching day plan:', error));
