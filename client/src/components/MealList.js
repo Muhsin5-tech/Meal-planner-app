@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MealEditForm from './MealEditForm';
 import MealForm from './MealForm';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://meal-planner-app-backend.onrender.com"
 
 const MealList = () => {
   const [meals, setMeals] = useState([]);
